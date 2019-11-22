@@ -36,17 +36,17 @@
 			</el-table-column>
 			<el-table-column label="当前状态" align="center" min-width="50px">
 				<template slot-scope="scope">
-					<span>{{scope.row.currentState_self}}</span>
+					<span>{{scope.row.httcurrentState}}</span>
 				</template>
 			</el-table-column>
 			<el-table-column label="状态变更日期" align="center" min-width="100px">
 				<template slot-scope="scope">
-					<span>{{scope.row.createTime_self}}</span>
+					<span>{{scope.row.httcreateTime}}</span>
 				</template>
 			</el-table-column>
 			<el-table-column label="变更缘由" align="center" min-width="120px">
 				<template slot-scope="scope">
-					<span>{{scope.row.changeReason_self}}</span>
+					<span>{{scope.row.httchangeReason}}</span>
 				</template>
 			</el-table-column>
 			<el-table-column label="操作" align="center" min-width="50px" class-name="small-padding fixed-width">
@@ -83,6 +83,7 @@
 				queryParams: {
 					companyName: '',
 					currentLevel: "",
+					visible:1,    //约定传参
 				},
 				currentLevels: [{
 					id: "1",
@@ -138,6 +139,7 @@
 				console.log("开始执行fetch方法")
 				params.pageSize = this.pagination.size
 				params.pageNum = this.pagination.num
+				params.visible=1    //约定传参
 				//    if (this.queryParams.timeRange) {
 				//      params.createTimeFrom = this.queryParams.timeRange[0]
 				//      params.createTimeTo = this.queryParams.timeRange[1]
@@ -153,23 +155,23 @@
 					this.list = r.data.data.rows
 					for(var i = 0; i < r.data.data.rows.length; i++) {
 						if(r.data.data.rows[i].currentState == "0") {
-							this.list[i].currentState_self = "默认"
+							this.list[i].httcurrentState = "默认"
 						}
 						if(r.data.data.rows[i].currentState == "1") {
-							this.list[i].currentState_self = "升"
+							this.list[i].httcurrentState = "升"
 						}
 						if(r.data.data.rows[i].currentState == "2") {
-							this.list[i].currentState_self = "降"
+							this.list[i].httcurrentState = "降"
 						}
 						if(r.data.data.rows[i].createTime == null) {
-							this.list[i].createTime_self = "暂未变更"
+							this.list[i].httcreateTime = "暂未变更"
 						}else{
-							this.list[i].createTime_self = r.data.data.rows[i].createTime
+							this.list[i].httcreateTime = r.data.data.rows[i].createTime
 						}
 						if(r.data.data.rows[i].changeReason == null) {
-							this.list[i].changeReason_self = "暂未变更"
+							this.list[i].httchangeReason = "暂未变更"
 						}else{
-							this.list[i].changeReason_self = r.data.data.rows[i].changeReason
+							this.list[i].httchangeReason = r.data.data.rows[i].changeReason
 							
 						}
 						

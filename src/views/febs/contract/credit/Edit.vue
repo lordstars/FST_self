@@ -22,10 +22,10 @@
 					</el-option>
 				</el-select>
 			</el-form-item>
-			<el-form-item label="信用等级：" prop="initialLevel">
-				<el-radio v-model="user.initialLevel" label="A">A</el-radio>
-				<el-radio v-model="user.initialLevel" label="B">B</el-radio>
-				<el-radio v-model="user.initialLevel" label="C">C</el-radio>
+			<el-form-item label="信用等级：" prop="temporary">
+				<el-radio v-model="user.temporary" label="A">A</el-radio>
+				<el-radio v-model="user.temporary" label="B">B</el-radio>
+				<el-radio v-model="user.temporary" label="C">C</el-radio>
 			</el-form-item>
 			<el-form-item label="变更缘由：" prop="changeReason" v-show="this.user.id">
 				<el-input v-model="user.changeReason" type="textarea" />
@@ -112,7 +112,7 @@
 						validator: validatorName,
 						trigger: 'blur'
 					}],
-					initialLevel: {
+					temporary: {
 						required: true,
 						message: '请选择信用等级',
 						trigger: 'blur'
@@ -208,6 +208,8 @@
 				console.log("编辑信息传过来的row")
 				console.log(val)
 				this.user = { ...val}
+				this.user.temporary=val.currentLevel
+				this.user.entryPerson=localStorage.getItem("currentusername")
 			},
 			close() {
 				this.$emit('close')
@@ -222,6 +224,7 @@
 						if(!this.user.id) {
 							console.log("id为空,是添加页面")
 							// create
+						
 							this.$put('system/companyDictionary', { ...this.user
 							}).then((res) => {
 								this.loading=false
@@ -236,13 +239,36 @@
 							})
 						} else {
 							console.log("id不为空,编辑页面")
+							console.log(this.user)
+//							if(this.user.currentState_self == "默认") {
+//							this.user.currentState = "0"
+//						}
+//						if(this.user.currentState_self == "升") {
+//							this.user.currentState = "1"
+//						}
+//						if(this.user.currentState_self == "降") {
+//							this.user.currentState = "2"
+//						}
+//						if(this.user.createTime_self == "暂未变更") {
+//							console.log("暂未变更修改字段名")
+//							this.user.createTime = null
+//						}else{
+//							this.user.createTime = this.user.createTime_self
+//							
+//						}
+//						if(this.user.changeReason_self == "暂未变更") {
+//							this.user.changeReason = null
+//						}else{
+//							this.user.changeReason = this.user.changeReason_self
+//							
+//						}
 							// update
-							let params = {
-								...this.user
-							}
-							delete params.createTime
-							this.$put('system/contractManagement', { ...params
-							}).then((res) => {
+							let params =this.user
+							console.log("params取代")
+							console.log(params)
+							
+//							delete params.createTime
+							this.$put('system/companyDictionary',params).then((res) => {
 								this.loading=false
 								console.log("重新编辑后提交")
 								this.isVisible = false
