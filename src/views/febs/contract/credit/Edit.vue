@@ -16,7 +16,7 @@
 					</el-option>
 				</el-select>
 			</el-form-item>
-			<el-form-item label="公司名称：" prop="companyName" v-show="this.user.id">
+			<el-form-item label="公司名称："  v-show="this.user.id">
 				<el-select v-model="user.companyName" filterable placeholder="客户名称" disabled="disabled">
 					<el-option v-for="item in customerNames" :key="item.id" :label="item.companyName" :value="item.companyName">
 					</el-option>
@@ -210,6 +210,7 @@
 				this.user = { ...val}
 				this.user.temporary=val.currentLevel
 				this.user.entryPerson=localStorage.getItem("currentusername")
+				this.user.changeReason=""
 			},
 			close() {
 				this.$emit('close')
@@ -263,11 +264,14 @@
 //							
 //						}
 							// update
+							
 							let params =this.user
+							if(params.changeReason==null){
+								params.changeReason=""
+							}
 							console.log("params取代")
 							console.log(params)
-							
-//							delete params.createTime
+							delete params.createTime
 							this.$put('system/companyDictionary',params).then((res) => {
 								this.loading=false
 								console.log("重新编辑后提交")

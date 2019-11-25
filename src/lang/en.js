@@ -14,7 +14,7 @@ export default {
     deleteCache: 'DeleteCache'
   },
   login: {
-    title: 'FEBS System Login',
+    title: 'TAMIS管理系统',
     logIn: 'Login',
     username: 'Username',
     password: 'Password',
@@ -142,7 +142,7 @@ export default {
     sidebarLogo: 'Sidebar Logo'
   },
   system: {
-    title: 'FEBS System'
+    title: 'TAMIS管理系统'
   },
   tips: {
     usernameShouldNotBeEmpty: 'Username can not be empty',

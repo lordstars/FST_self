@@ -39,7 +39,7 @@
 					<span>{{scope.row.httcurrentState}}</span>
 				</template>
 			</el-table-column>
-			<el-table-column label="状态变更日期" align="center" min-width="100px">
+			<!--<el-table-column label="状态变更日期" align="center" min-width="100px">
 				<template slot-scope="scope">
 					<span>{{scope.row.httcreateTime}}</span>
 				</template>
@@ -48,7 +48,7 @@
 				<template slot-scope="scope">
 					<span>{{scope.row.httchangeReason}}</span>
 				</template>
-			</el-table-column>
+			</el-table-column>-->
 			<el-table-column label="操作" align="center" min-width="50px" class-name="small-padding fixed-width">
 				<template slot-scope="{row}">
 					<i v-hasPermission="['stateChange:view']" class="el-icon-view table-operation" style="color: #87d068;" @click="view(row)" />
@@ -163,17 +163,17 @@
 						if(r.data.data.rows[i].currentState == "2") {
 							this.list[i].httcurrentState = "降"
 						}
-						if(r.data.data.rows[i].createTime == null) {
-							this.list[i].httcreateTime = "暂未变更"
-						}else{
-							this.list[i].httcreateTime = r.data.data.rows[i].createTime
-						}
-						if(r.data.data.rows[i].changeReason == null) {
-							this.list[i].httchangeReason = "暂未变更"
-						}else{
-							this.list[i].httchangeReason = r.data.data.rows[i].changeReason
-							
-						}
+//						if(r.data.data.rows[i].createTime == null) {
+//							this.list[i].httcreateTime = "暂未变更"
+//						}else{
+//							this.list[i].httcreateTime = r.data.data.rows[i].createTime
+//						}
+//						if(r.data.data.rows[i].changeReason == null) {
+//							this.list[i].httchangeReason = "暂未变更"
+//						}else{
+//							this.list[i].httchangeReason = r.data.data.rows[i].changeReason
+//							
+//						}
 						
 					}
 

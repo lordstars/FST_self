@@ -36,8 +36,8 @@ module.exports = {
       // change xxx-api/login => mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
       [process.env.VUE_APP_BASE_API]: {
-        target: 'http://192.168.1.102:8301/',//开发环境   //********一定要记得改上传下载的地方的路径
-//      target: 'http://120.77.233.206:8301/',//线上环境
+//      target: 'http://192.168.1.102:8301/',//开发环境   //********一定要记得改上传下载的地方的路径
+        target: 'http://120.77.233.206:8301/',//线上环境
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''

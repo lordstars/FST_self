@@ -14,7 +14,7 @@ export default {
     deleteCache: '清除缓存'
   },
   login: {
-    title: 'FEBS 系统登录',
+    title: 'TAMIS管理系统',
     logIn: '立即登录',
     username: '账号',
     password: '密码',
@@ -158,7 +158,7 @@ export default {
     sidebarLogo: '侧边栏 Logo'
   },
   system: {
-    title: 'FEBS 权限系统'
+    title: 'TAMIS管理系统'
   },
   tips: {
     usernameShouldNotBeEmpty: '用户名不能为空',

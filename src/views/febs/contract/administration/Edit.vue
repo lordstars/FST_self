@@ -22,7 +22,7 @@
 			<el-form-item label="合同编号：" prop="contractNum" v-show="!this.user.id">
 				<el-input v-model="user.contractNum" />
 			</el-form-item>
-			<el-form-item label="合同编号：" prop="contractNum" v-show="this.user.id">
+			<el-form-item label="合同编号：" v-show="this.user.id">
 				<el-input v-model="user.contractNum" disabled="disabled" />
 			</el-form-item>
 			<el-form-item label="合同性质：" prop="contractNature">
@@ -122,8 +122,8 @@
 				importHeaders: {
 					"Authorization": "bearer " + localStorage.getItem("token")
 				},
-				//				url:"http://120.77.233.206:8301/system/file/upload/",
-				url: "http://192.168.1.102:8301/system/file/upload/",
+				url:"http://120.77.233.206:8301/system/file/upload/",
+//				url: "http://192.168.1.102:8301/system/file/upload/",
 				customerNames: [],
 				//				uploadForm: new FormData(),
 				file: [],
@@ -267,8 +267,7 @@
 			setUser(val) {
 				console.log("编辑信息传过来的row")
 				console.log(val)
-				this.user = { ...val
-				}
+				this.user = { ...val}
 			},
 			forValidator(val) {
 				console.log("首页传入合同编号数组进行验证")
@@ -297,7 +296,7 @@
 							upData.append("body", JSON.stringify(this.user)) // 这里需要转换一下格式传给后台
 							this.$axios({
 								method: 'post',
-								url: 'http://192.168.1.102:8301/system/file/upload/',
+								url: 'http://120.77.233.206:8301/system/file/upload/',
 								data: upData,
 								headers: {
 									'Authorization': "bearer " + localStorage.getItem("token"),
@@ -318,12 +317,19 @@
 						} else {
 							console.log("id不为空")
 							// update
-							let params = {
-								...this.user
-							}
+							let params =this.user
 							delete params.createTime
-							this.$put('system/contractManagement', { ...params
-							}).then((res) => {
+							
+							console.log("传递user对象")
+//							let currentLevel=this.user.httcurrentLevel
+//							if(this.user.httcurrentLevel=="默认"){
+//								currentLevel=null
+//							}else{
+//								currentLevel=this.user.httcurrentLevel
+//							}
+//							this.$set(params,"currentLevel",currentLevel)
+//							console.log(params)
+							this.$put('system/contractManagement',params).then((res) => {
 								this.loading = false
 								console.log("重新编辑后提交")
 								this.isVisible = false

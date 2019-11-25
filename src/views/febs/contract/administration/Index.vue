@@ -60,7 +60,7 @@
 			</el-table-column>
 			<el-table-column label="客户等级" align="center" min-width="70px">
 				<template slot-scope="scope">
-					<span>{{scope.row.companyLevel}}</span>
+					<span>{{scope.row.httcurrentLevel}}</span>
 				</template>
 			</el-table-column>
 			<el-table-column label="签订日期" align="center" min-width="100px">
@@ -406,17 +406,10 @@
 						}
 					}
 					for(var i = 0; i < data.rows.length; i++) {
-						if(data.rows[i].companyLevel == "1") {
-							this.list[i].companyLevel = "A"
-						}
-						if(data.rows[i].companyLevel == "2") {
-							this.list[i].companyLevel = "B"
-						}
-						if(data.rows[i].companyLevel == "3") {
-							this.list[i].companyLevel = "C"
-						}
-						if(data.rows[i].companyLevel == null) {
-							this.list[i].companyLevel = "默认"
+						if(data.rows[i].currentLevel == null) {
+							this.list[i].httcurrentLevel = "默认"
+						}else{
+							this.list[i].httcurrentLevel = data.rows[i].currentLevel
 						}
 					}
 

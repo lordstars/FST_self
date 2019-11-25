@@ -1,6 +1,6 @@
 <template>
 	<el-dialog :title="$t('common.view')" :width="width" :visible.sync="isVisible" class="user-view" >
-		<el-upload class="upload-demo" action="http://192.168.1.102:8301/system/file/uploadup/" multiple :file-list="fileList" :show-file-list="false" :on-success="uploadFile" :headers="importHeaders" style="margin-bottom: 20px;margin-top: -20px;" :data="uploadData">
+		<el-upload class="upload-demo" action="http://120.77.233.206:8301/system/file/uploadup/" multiple :file-list="fileList" :show-file-list="false" :on-success="uploadFile" :headers="importHeaders" style="margin-bottom: 20px;margin-top: -20px;" :data="uploadData">
 			<el-button size="small" type="primary">点击上传</el-button>
 		</el-upload>
 		<el-table :data="tableData" style="width: 100%" ref="table" :header-cell-style="{background:'#eef1f6',color:'#606266'}" fit border stripe v-loading="viewLoading">
@@ -141,7 +141,7 @@
 				}
 				var requestDataStr = JSON.stringify(javaBean);
 				var options = {
-					url: 'http://192.168.1.102:8301/system/file/' + row.id, //下载地址
+					url: 'http://120.77.233.206:8301/system/file/' + row.id, //下载地址
 					data: requestDataStr, //要发送的数据
 					method: 'post', //post方式发送数据
 				};

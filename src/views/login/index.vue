@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <div class="login-info">
-      <div class="title">FEBS Cloud</div>
+      <div class="title">TAMIS管理系统</div>
       <div class="sub-title">{{ $t('common.system') }}</div>
       <div class="desc">1. {{ $t('common.desc.a') }}</div>
       <div class="desc">2. {{ $t('common.desc.b') }}</div>
@@ -141,9 +141,9 @@
         </el-dropdown-menu>
       </el-dropdown>
     </el-form>
-    <span class="login-footer">
+    <!--<span class="login-footer">
       © 2019 <a target="_blank" href="https://mrbird.cc">MrBird</a> - FEBS
-    </span>
+    </span>-->
   </div>
 </template>
 
