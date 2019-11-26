@@ -90,7 +90,7 @@
 			</el-table-column>
 			<el-table-column label="操作" align="center" min-width="80px" class-name="small-padding fixed-width">
 				<template slot-scope="{row}">
-					<i v-hasPermission="['contractManagement:view']" class="el-icon-view table-operation" style="color: #87d068;" @click="view(row)" />
+					<i v-hasPermission="['contractFile:view']" class="el-icon-view table-operation" style="color: #87d068;" @click="view(row)" />
 					<i v-hasPermission="['contractManagement:update']" class="el-icon-edit table-operation" style="color: #2db7f5;" @click="edit(row)" />
 					<i v-hasPermission="['contractManagement:delete']" class="el-icon-delete table-operation" style="color: #f50;" @click="singleDelete(row)" />
 					<el-link v-has-no-permission="['user:view','user:update','user:delete']" class="no-perm">
